@@ -4,9 +4,10 @@ import { featured as f } from "@/content/featured";
 export function FeaturedCase() {
   return (
     <section className="case" id={f.id} aria-labelledby="case-title">
-      <p className="eyebrow case__eyebrow" data-reveal>
-        {f.eyebrow}
-      </p>
+      <div className="case__intro" data-reveal>
+        <p className="eyebrow">{f.eyebrow}</p>
+        <p className="case__intronote">{f.eyebrowNote}</p>
+      </div>
 
       <div className="case__grid">
         <header className="case__head" data-reveal>

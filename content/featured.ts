@@ -6,7 +6,8 @@
 
 export const featured = {
   id: "destaque",
-  eyebrow: "Projeto em destaque",
+  eyebrow: "Se for ver um só, veja este",
+  eyebrowNote: "Meu projeto mais completo: construí sozinho, do banco à voz.",
   kicker: "EdTech · simulação clínica com IA · cofundador",
   title: "Dewe",
   highlight: "96%",

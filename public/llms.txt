@@ -4,7 +4,7 @@
 
 Trabalha com agentes de voz, RAG, treino e avaliação de modelos, jogos e produtos web, do protótipo à produção, sempre com resultado medido.
 
-## Projeto em destaque: Dewe (cofundador)
+## Projeto mais completo: Dewe (cofundador)
 
 Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno de medicina atende por voz um paciente simulado e recebe uma avaliação comentada com base nas diretrizes clínicas. Construída inteira por ele: voz em tempo real, avaliação por IA com rubrica e RAG, casos montados pelo professor numa entrevista com a IA, turmas e simulação seriada.
 
