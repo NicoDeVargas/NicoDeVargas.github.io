@@ -146,8 +146,6 @@ export function Footer() {
         <span>© {year} {site.name}</span>
         <span className="footer__sep" aria-hidden="true" />
         <Clock />
-        <span className="footer__sep" aria-hidden="true" />
-        <span>Feito à mão com Next.js, WebGL e gravuras de Gustave Doré</span>
       </p>
     </footer>
   );

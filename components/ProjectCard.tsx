@@ -27,7 +27,7 @@ function Highlight({ project }: { project: Project }) {
   }
   return (
     <p className="card__highlight">
-      <span className={`card__num${project.highlight.length > 9 ? " card__num--long" : ""}`}>{project.highlight}</span>
+      <span className={`card__num${project.highlight.length > 9 || project.highlight.includes("→") ? " card__num--long" : ""}`}>{project.highlight}</span>
       {project.highlightLabel ? <span className="card__numlabel">{project.highlightLabel}</span> : null}
     </p>
   );

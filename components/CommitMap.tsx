@@ -78,10 +78,6 @@ export function CommitMap() {
             </span>
           </h2>
         </div>
-        <p className="commits__lede" data-reveal>
-          Cada quadrado é um dia de 2026, somando projetos pessoais e da empresa. Repositórios privados entram
-          só como número.
-        </p>
       </div>
 
       <div className="commits__map" data-reveal>
