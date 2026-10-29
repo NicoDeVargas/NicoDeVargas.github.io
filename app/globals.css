@@ -4,7 +4,8 @@
 
 :root {
   --ink: #3b2bb8;
-  --ink-2: #4a3fc0; /* texto secundário (contraste AA sobre o papel) */
+  --ink-2: #3b3378; /* rótulos e texto secundário: violeta escuro e apagado */
+  --text: #1f1660; /* texto corrido: tinta quase preta */
   --mid: #8f84e0;
   --paper: #fbf8ec;
   --paper-rgb: 251, 248, 236;
@@ -1687,4 +1688,20 @@ figure {
     margin-top: 22px;
     border-top: 1px solid var(--line);
   }
+}
+
+/* Tinta em duas intensidades: o texto corrido sai quase preto; o violeta
+   fica para títulos, números, links, botões e gravuras. */
+.hero__lede,
+.stat__label,
+.case__lede,
+.case__numlabel,
+.case__block p,
+.case__list li,
+.card__desc,
+.card__facts li,
+.cartouche__intro,
+.about__p,
+.footer__line {
+  color: var(--text);
 }
