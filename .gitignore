@@ -10,3 +10,5 @@ assets-src/*.png
 assets-src/originals/
 .vercel/
 .DS_Store
+assets-src/colored/
+screenshots/
