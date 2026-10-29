@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { Plate } from "@/components/Plate";
 import type { PlateName } from "@/content/projects";
 import { createEngraving, supportsWebGL, type Engraving as GL, type EngravingState } from "@/lib/engraving-gl";
-import { gsap, prefersReducedMotion, ScrollTrigger } from "@/lib/gsap";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 type Props = {
   plate: PlateName;
@@ -15,12 +15,12 @@ type Props = {
   priority?: boolean;
 };
 
-const easeOut = (t: number) => 1 - Math.pow(1 - t, 2);
-
 /**
- * Gravura em tela cheia. Com WebGL: revelação por shader amarrada ao scroll
- * (capítulo) ou ao carregamento (capa) e depois zoom lento. Sem WebGL: máscara
- * CSS que desce com o mesmo progresso. Com reduced motion: imagem estática.
+ * Gravura em tela cheia. Com WebGL, é "gravada" na tela UMA vez pelo shader:
+ * na capa, ao carregar; nos capítulos, ao entrar na tela. Não fica amarrada à
+ * rolagem. Ao terminar, o canvas é descartado e fica a <img> (mesmo
+ * enquadramento), liberando a GPU. Sem WebGL: máscara CSS com o mesmo tempo.
+ * Com reduced motion: imagem estática desde o início.
  */
 export function Engraving({ plate, alt, focus, mode, sizes, priority }: Props) {
   const root = useRef<HTMLDivElement>(null);
@@ -38,20 +38,10 @@ export function Engraving({ plate, alt, focus, mode, sizes, priority }: Props) {
     }
 
     const state: EngravingState = { reveal: 0, zoom: 1, focusX: fx, focusY: fy };
-    const useGL = supportsWebGL();
     let engraving: GL | null = null;
     let canvas: HTMLCanvasElement | null = null;
-    let near = false;
-    let initializing = false;
+    let tween: gsap.core.Tween | null = null;
     let killed = false;
-
-    const apply = () => {
-      if (engraving) engraving.set(state);
-      else if (el.dataset.state === "css") {
-        el.style.setProperty("--reveal", state.reveal.toFixed(4));
-        el.style.setProperty("--zoom", state.zoom.toFixed(4));
-      }
-    };
 
     const ready = async () => {
       img.loading = "eager";
@@ -63,117 +53,70 @@ export function Engraving({ plate, alt, focus, mode, sizes, priority }: Props) {
       }
     };
 
-    const start = async () => {
-      if (engraving || initializing) return;
-      initializing = true;
-      await ready();
-      initializing = false;
-      if (killed || !near || engraving) return;
-      if (useGL) {
-        canvas = document.createElement("canvas");
-        canvas.className = "engraving__canvas";
-        canvas.setAttribute("aria-hidden", "true");
-        el.appendChild(canvas);
-        engraving = createEngraving(canvas, img, state);
-        if (engraving) {
-          el.dataset.state = "gl";
-          return;
-        }
-        canvas.remove();
-        canvas = null;
-      }
-      el.dataset.state = "css";
-      apply();
-    };
-
-    const stop = () => {
+    const finish = () => {
+      el.dataset.state = "static";
       engraving?.dispose();
       engraving = null;
       canvas?.remove();
       canvas = null;
     };
 
-    // Cria o contexto WebGL só perto da tela e libera longe dela.
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        near = entry.isIntersecting;
-        if (near) void start().then(() => mode === "hero" && intro());
-        else stop();
-      },
-      { rootMargin: "100% 0px 100% 0px" },
-    );
-    io.observe(el);
+    const apply = () => {
+      if (engraving) engraving.set(state);
+      else el.style.setProperty("--reveal", state.reveal.toFixed(4));
+    };
+
+    const play = async () => {
+      await ready();
+      if (killed) return;
+      if (supportsWebGL()) {
+        canvas = document.createElement("canvas");
+        canvas.className = "engraving__canvas";
+        canvas.setAttribute("aria-hidden", "true");
+        el.appendChild(canvas);
+        engraving = createEngraving(canvas, img, state);
+        if (!engraving) {
+          canvas.remove();
+          canvas = null;
+        }
+      }
+      el.dataset.state = engraving ? "gl" : "css";
+      apply();
+      tween = gsap.to(state, {
+        reveal: 1,
+        duration: mode === "hero" ? 2 : 1.2,
+        delay: mode === "hero" ? 0.1 : 0,
+        ease: mode === "hero" ? "power2.inOut" : "power2.out",
+        onUpdate: apply,
+        onComplete: finish,
+      });
+    };
+
+    let io: IntersectionObserver | null = null;
+    if (mode === "hero") void play();
+    else {
+      // Começa quando uma boa parte da gravura está à vista.
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          io?.disconnect();
+          void play();
+        },
+        { threshold: 0.35 },
+      );
+      io.observe(el);
+    }
 
     const ro = new ResizeObserver(() => engraving?.resize());
     ro.observe(el);
 
-    const triggers: ScrollTrigger[] = [];
-    let introTween: gsap.core.Tween | null = null;
-    let introDone = false;
-
-    const intro = () => {
-      if (introDone || introTween) return;
-      introTween = gsap.to(state, {
-        reveal: 1,
-        duration: 2.8,
-        delay: 0.1,
-        ease: "power2.inOut",
-        onUpdate: apply,
-        onComplete: () => {
-          introDone = true;
-        },
-      });
-    };
-
-    if (mode === "chapter") {
-      const section = el.closest<HTMLElement>("[data-chapter]") ?? el;
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top 85%",
-          end: "top -45%",
-          onUpdate: (s) => {
-            state.reveal = s.progress;
-            apply();
-          },
-          onRefresh: (s) => {
-            state.reveal = s.progress;
-            apply();
-          },
-        }),
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          end: "bottom bottom",
-          onUpdate: (s) => {
-            state.zoom = 1 + 0.16 * easeOut(s.progress);
-            state.focusY = fy + (0.5 - fy) * 0.25 * s.progress;
-            apply();
-          },
-        }),
-      );
-    } else {
-      const section = el.closest<HTMLElement>("[data-hero]") ?? el;
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          onUpdate: (s) => {
-            state.zoom = 1 + 0.12 * s.progress;
-            apply();
-          },
-        }),
-      );
-    }
-
     return () => {
       killed = true;
-      io.disconnect();
+      io?.disconnect();
       ro.disconnect();
-      introTween?.kill();
-      triggers.forEach((t) => t.kill());
-      stop();
+      tween?.kill();
+      engraving?.dispose();
+      canvas?.remove();
     };
   }, [fx, fy, mode]);
 

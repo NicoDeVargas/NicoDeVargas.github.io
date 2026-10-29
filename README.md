@@ -69,9 +69,9 @@ Build local com prefixo: `BASE_PATH=/portfolio npm run build`. O arquivo `.nojek
 
 ## Movimento e acessibilidade
 
-- Com `prefers-reduced-motion: reduce`: sem rolagem suave, sem shader (imagens estáticas), sem animações de entrada, números já no valor final, pássaros parados e o passarinho escondido.
+- Com `prefers-reduced-motion: reduce`: sem shader (imagens estáticas), sem animações de entrada, carrossel sem rolagem suave, números já no valor final e pássaros parados.
 - Sem WebGL: a gravura é revelada por uma máscara CSS amarrada ao mesmo progresso.
-- O passarinho (easter egg) não recebe cliques (`pointer-events: none`).
+- Capítulos: o shader grava cada gravura uma vez ao entrar na tela (sem amarrar à rolagem). Projetos em carrossel: setas, arrastar, swipe, teclado (← → Home End).
 
 ## Créditos
 

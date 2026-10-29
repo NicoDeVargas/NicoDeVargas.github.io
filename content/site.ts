@@ -21,7 +21,7 @@ export const site = {
   // O primeiro número vem de content/contributions.json (soma das duas contas).
   stats: [
     { key: "commits", value: 0, suffix: "", label: "commits em 2026, somando duas contas do GitHub" },
-    { key: "vendedores", value: 1000, suffix: "+", label: "vendedores treinados com os simuladores que construí" },
+    { key: "vendedores", value: 100, suffix: "+", label: "vendedores treinados com os simuladores que construí" },
     { key: "areas", value: 4, suffix: "", label: "áreas: IA aplicada, modelos, games e web" },
   ],
 

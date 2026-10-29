@@ -63,14 +63,9 @@ export const chapters: Chapter[] = [
         title: "Simuladores de venda por voz",
         kicker: "Treinamento de vendas · varejo, consórcio, telecom",
         highlight: "−71%",
-        highlightLabel: "custo por simulação",
-        description:
-          "O vendedor treina conversando por voz com um cliente simulado. Propus e validei com benchmark próprio uma arquitetura em cascata (STT → LLM → TTS) no lugar de uma API realtime.",
-        facts: [
-          "Mais de 1.000 vendedores treinados",
-          "100+ sessões simultâneas no lançamento",
-          "US$ 0,48 → US$ 0,14 por simulação",
-        ],
+        highlightLabel: "de custo por simulação",
+        description: "Vendedores treinam conversando por voz com um cliente simulado.",
+        facts: ["Mais de 100 vendedores treinados"],
         stack: ["Next.js", "Gemini", "ElevenLabs", "AWS"],
         detail: { x: 0.36, y: 0.5, zoom: 2.6 },
       },
@@ -80,8 +75,7 @@ export const chapters: Chapter[] = [
         kicker: "Copiloto de vendas B2B · tecnologia",
         highlight: "40% → 0%",
         highlightLabel: "alucinação de produtos",
-        description:
-          "O copiloto passou de RAG puro em PostgreSQL para RAG híbrido com grafos. Medido numa bateria de 1.000 perguntas sobre o catálogo.",
+        description: "Copiloto de vendas B2B que responde sobre o catálogo sem inventar produto, medido em 1.000 perguntas.",
         stack: ["PostgreSQL", "Grafos", "RAG"],
         detail: { x: 0.53, y: 0.14, zoom: 3 },
       },
@@ -91,8 +85,7 @@ export const chapters: Chapter[] = [
         kicker: "Pós-reunião · vendas consultivas",
         highlight: "2 min",
         highlightLabel: "para registrar uma reunião (antes 10–20 min)",
-        description:
-          "Depois de cada reunião, a IA entrevista o vendedor por voz e preenche o CRM sozinha.",
+        description: "Depois de cada reunião, a IA entrevista o vendedor por voz e preenche o CRM.",
         facts: ["Campos vazios no CRM: 45% → 0%"],
         stack: ["Agentes de voz", "LLM", "CRM"],
         detail: { x: 0.27, y: 0.86, zoom: 2.4 },
@@ -103,8 +96,7 @@ export const chapters: Chapter[] = [
         kicker: "Infraestrutura · desenhada por mim",
         highlight: "2 dias",
         highlightLabel: "para subir um cliente novo",
-        description:
-          "Uma base única que atende vários clientes isolados. Nos pilotos, serverless cortou cerca de 60% do custo de AWS.",
+        description: "Uma base única que atende vários clientes isolados.",
         facts: ["~60% menos custo de AWS nos pilotos"],
         stack: ["ECS", "RDS", "S3", "Lambda", "CloudFormation", "CDK"],
         detail: { x: 0.8, y: 0.3, zoom: 2.2 },
@@ -128,12 +120,8 @@ export const chapters: Chapter[] = [
         kicker: "LoRA · NPCs que devolvem ações em JSON",
         highlight: "11% → 93%",
         highlightLabel: "ações corretas",
-        description:
-          "Treinei um adaptador LoRA para que personagens de jogo respondam com fala e ação estruturada. O validador do jogo aprovou 97,5% das falas.",
-        facts: [
-          "97,5% das falas aprovadas pelo validador",
-          "Achado: fundir o adaptador e requantizar para Q4 derruba de 90% para 30%",
-        ],
+        description: "Personagens de jogo que respondem com fala e uma ação válida para o jogo.",
+        facts: ["97,5% das falas aprovadas pelo validador do jogo", "Achado: requantizar o modelo fundido derruba de 90% para 30%"],
         stack: ["Qwen3-8B", "PyTorch", "PEFT", "llama.cpp"],
         links: [{ label: "Código", href: "https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora" }],
         detail: { x: 0.6, y: 0.45, zoom: 2.4 },
@@ -144,8 +132,7 @@ export const chapters: Chapter[] = [
         kicker: "Avaliação · custo, latência e segurança",
         highlight: "3 × 12",
         highlightLabel: "motores × ataques de prompt",
-        description:
-          "Três motores de voz comparados em custo, latência e resistência a 12 ataques de prompt. Foi ele que validou a arquitetura em cascata dos simuladores.",
+        description: "Três motores de voz comparados em custo, latência e resistência a 12 ataques de prompt.",
         stack: ["STT", "LLM", "TTS", "Avaliação"],
         detail: { x: 0.5, y: 0.78, zoom: 2.2 },
       },
@@ -167,9 +154,8 @@ export const chapters: Chapter[] = [
         title: "RPG Labirinto",
         kicker: "Godot · diálogos gerados por IA",
         highlight: "100% local",
-        highlightLabel: "modelo treinado por mim, rodando no computador do jogador",
-        description:
-          "Um RPG em Godot em que os personagens conversam com diálogos gerados por um modelo que eu treinei, rodando local via llama.cpp.",
+        highlightLabel: "IA rodando no computador do jogador",
+        description: "RPG em Godot em que os personagens conversam com um modelo treinado por mim, rodando no computador do jogador.",
         stack: ["Godot", "llama.cpp", "LoRA"],
         detail: { x: 0.55, y: 0.55, zoom: 2.4 },
       },
@@ -179,8 +165,7 @@ export const chapters: Chapter[] = [
         kicker: "Jogo ao vivo · evento corporativo",
         highlight: "1 noite",
         highlightLabel: "do zero ao telão",
-        description:
-          "Jogo ao vivo no telão com votação pelo celular para cerca de 25 executivos. Construído em uma noite.",
+        description: "Jogo ao vivo no telão, com votação pelo celular, para cerca de 25 executivos.",
         stack: ["Next.js", "Tempo real"],
         detail: { x: 0.25, y: 0.3, zoom: 2.2 },
       },
@@ -201,8 +186,7 @@ export const chapters: Chapter[] = [
         slug: "dewe",
         title: "Dewe",
         kicker: "EdTech · simulações educacionais e clínicas",
-        description:
-          "Plataforma EdTech de simulações educacionais e clínicas em tempo real com IA. Um produto inteiro, com muitas stacks envolvidas, do tempo real à interface.",
+        description: "Plataforma EdTech de simulações educacionais e clínicas em tempo real com IA.",
         // TODO(dono): confirmar a descrição acima, listar a stack e adicionar link e imagem/vídeo.
         stack: ["IA em tempo real", "EdTech"],
         featured: true,
@@ -213,9 +197,8 @@ export const chapters: Chapter[] = [
         title: "Fluente",
         kicker: "Educação · leitura infantil",
         highlight: "palavra a palavra",
-        highlightLabel: "sem LLM na nota",
-        description:
-          "Mede a fluência de leitura de crianças palavra por palavra, sem LLM na nota.",
+        highlightLabel: "a leitura avaliada palavra por palavra",
+        description: "Mede a fluência de leitura de crianças, sem LLM na nota.",
         stack: ["Next.js", "AssemblyAI"],
         links: [
           { label: "Demo", href: "https://fluente-black.vercel.app" },
@@ -227,8 +210,7 @@ export const chapters: Chapter[] = [
         slug: "sinal-de-alarme",
         title: "Sinal de Alarme",
         kicker: "Saúde · hackathon AssemblyAI",
-        description:
-          "Treino por voz para reconhecer os sinais de alarme da dengue, feito no hackathon de agentes de voz da AssemblyAI.",
+        description: "Treino por voz para reconhecer os sinais de alarme da dengue, feito no hackathon de agentes de voz da AssemblyAI.",
         stack: ["AssemblyAI", "Agente de voz"],
         links: [
           {
@@ -242,7 +224,7 @@ export const chapters: Chapter[] = [
         slug: "landing-pages",
         title: "Deletrica e Cafelipe",
         kicker: "Landing pages",
-        description: "Landing pages de ponta a ponta: texto, design e código.",
+        description: "Landing pages feitas de ponta a ponta.",
         // TODO(dono): adicionar print (media) e links das duas páginas.
         stack: ["Web", "Landing page"],
         detail: { x: 0.2, y: 0.8, zoom: 2.4 },

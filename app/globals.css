@@ -41,16 +41,8 @@ html {
   text-size-adjust: 100%;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  html:not(.lenis) {
+  html {
     scroll-behavior: smooth;
   }
 }
@@ -340,7 +332,9 @@ figure {
    em 3 s (JS quebrado), ela aparece sozinha. */
 .js .engraving:not([data-state]) .engraving__img {
   opacity: 0;
-  animation: plate-fallback 0.8s ease 3s forwards;
+}
+.js:not(.hydrated) .engraving:not([data-state]) .engraving__img {
+  animation: plate-fallback 0.8s ease 4s forwards;
 }
 .engraving[data-state="gl"] .engraving__img {
   visibility: hidden;
@@ -480,29 +474,41 @@ figure {
   margin: 0 auto;
 }
 .stats__grid {
+  container-type: inline-size;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
 }
 .stat {
-  padding: clamp(24px, 3vw, 40px) clamp(12px, 2.4vw, 36px) 0;
+  min-width: 0;
+  padding: clamp(24px, 3vw, 40px) clamp(16px, 2.4vw, 36px) 0;
+}
+.stat:first-child {
+  padding-left: 0;
 }
 .stat + .stat {
   border-left: 1px solid var(--line);
 }
+/* O tamanho segue a largura do grid (cqi), não a da janela, e é igual nas
+   três colunas: "1.491*" ocupa ~60% da coluna em qualquer largura. */
 .stat__value {
+  display: flex;
+  align-items: flex-start;
   font-family: var(--serif);
   font-weight: 500;
-  font-size: var(--t-num);
+  font-size: clamp(2.75rem, 10cqi, 8.5rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
-  font-variant-numeric: lining-nums tabular-nums;
+  font-variant-numeric: lining-nums proportional-nums;
   white-space: nowrap;
 }
 .stat__value sup {
-  font-size: 0.3em;
-  vertical-align: super;
-  margin-left: 0.08em;
+  margin: 0.08em 0 0 0.06em;
+  font-family: var(--sans);
+  font-size: 0.2em;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
   color: var(--ink-2);
 }
 .stat__label {
@@ -521,11 +527,12 @@ figure {
     grid-template-columns: 1fr;
     border-top: 0;
   }
-  .stat {
-    padding: 28px 0;
+  .stat,
+  .stat:first-child {
+    padding: 26px 0;
     border-top: 1px solid var(--line-strong);
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
     align-items: end;
     gap: 20px;
   }
@@ -533,7 +540,7 @@ figure {
     border-left: 0;
   }
   .stat__value {
-    font-size: clamp(3.5rem, 18vw, 5rem);
+    font-size: clamp(2.5rem, 18cqi, 5rem);
   }
   .stat__label {
     margin: 0 0 6px;
@@ -555,28 +562,31 @@ figure {
 
 .chapter {
   position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 7vw, 104px) 0 clamp(56px, 5vw, 80px);
+  border-top: 1px solid var(--ink);
 }
 .chapter__stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
+  position: absolute;
+  inset: 0;
 }
-.chapter__flow {
+.chapter__body {
   position: relative;
   z-index: 1;
-  margin-top: -100svh;
-  padding: 0 var(--gutter);
-}
-.chapter__intro {
-  min-height: 165svh;
-  display: flex;
-  align-items: flex-start;
-  padding-top: 62svh;
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "head track"
+    "ctrl track";
+  column-gap: clamp(32px, 4vw, 64px);
+  row-gap: 24px;
+  padding-left: var(--gutter);
 }
 .cartouche {
+  grid-area: head;
+  align-self: start;
   position: relative;
-  max-width: 720px;
   padding: clamp(28px, 4vw, 52px) clamp(24px, 4vw, 56px) clamp(28px, 4vw, 48px);
   background: rgba(var(--paper-rgb), 0.95);
   border: 1px solid var(--ink);
@@ -600,11 +610,12 @@ figure {
   margin: 14px 0 10px;
   font-family: var(--serif);
   font-weight: 500;
-  font-size: var(--t-h2);
+  font-size: clamp(2.5rem, 1.7rem + 2.4vw, 4.25rem);
   line-height: 0.95;
   letter-spacing: -0.02em;
 }
 .cartouche__subtitle {
+  line-height: 1.2;
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(1.375rem, 1.1rem + 1vw, 2rem);
@@ -618,14 +629,141 @@ figure {
   color: var(--ink-2);
 }
 
-.chapter__projects {
+/* Carrossel ---------------------------------------------------------------- */
+.carousel__track {
+  grid-area: track;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: clamp(30vh, 40vh, 48vh);
-  padding-bottom: 70svh;
-  max-width: var(--max);
-  margin: 0 auto;
+  gap: clamp(16px, 2vw, 28px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+  padding: 4px var(--gutter) 48px 2px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+.carousel__track:focus-visible {
+  outline-offset: -2px;
+}
+@media (pointer: fine) {
+  .carousel__track {
+    cursor: grab;
+  }
+}
+.carousel__track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+.carousel__track.is-dragging a {
+  pointer-events: none;
+}
+.carousel__slide {
+  flex: 0 0 auto;
+  display: flex;
+  width: min(500px, 84vw);
+  scroll-snap-align: start;
+}
+.carousel__slide:has(.card--featured) {
+  width: min(900px, 88vw);
+}
+.carousel__controls {
+  grid-area: ctrl;
+  align-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 48px;
+  padding: 14px 14px 14px 22px;
+  background: rgba(var(--paper-rgb), 0.95);
+  border: 1px solid var(--ink);
+}
+.carousel__count {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+.carousel__of {
+  font-size: 1.125rem;
+  color: var(--ink-2);
+}
+.carousel__dots {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+}
+.carousel__dot {
+  flex: 1;
+  max-width: 36px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  background: linear-gradient(var(--line-strong), var(--line-strong)) center / 100% 1px no-repeat;
+  cursor: pointer;
+  transition: background-size 0.4s var(--ease);
+}
+.carousel__dot.is-active {
+  background: linear-gradient(var(--ink), var(--ink)) center / 100% 3px no-repeat;
+}
+.carousel__arrows {
+  display: flex;
+}
+.carousel__arrow {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-left: -1px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease),
+    opacity 0.3s;
+}
+.carousel__arrow:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.carousel__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (max-width: 999px) {
+  .chapter__body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "head"
+      "track"
+      "ctrl";
+    row-gap: 0;
+  }
+  .cartouche {
+    margin: 0 var(--gutter) 32px 0;
+    max-width: 640px;
+  }
+  .cartouche__intro {
+    font-size: var(--t-sm);
+  }
+  .carousel__track {
+    padding-bottom: 24px;
+  }
+  .carousel__controls {
+    margin: 0 var(--gutter) 0 0;
+    align-self: auto;
+  }
+}
+
 .chapter__credit {
   position: absolute;
   right: var(--gutter);
@@ -647,13 +785,12 @@ figure {
 /* Pranchas de projeto ------------------------------------------------------- */
 .card {
   position: relative;
-  width: min(600px, 100%);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background: var(--paper);
   border: 1px solid var(--ink);
   box-shadow: 0 30px 80px -40px rgba(31, 22, 110, 0.45);
-}
-.card:nth-child(even) {
-  align-self: flex-end;
 }
 .card__art {
   position: relative;
@@ -697,8 +834,20 @@ figure {
   font-weight: 600;
   letter-spacing: 0.06em;
 }
+.card__art {
+  flex: none;
+}
+.carousel__slide .card__art {
+  height: clamp(140px, 13vw, 180px);
+}
+.carousel__slide .card--featured .card__art {
+  height: auto;
+}
 .card__body {
-  padding: clamp(24px, 3.4vw, 44px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(22px, 3vw, 40px);
 }
 .card__kicker {
   display: flex;
@@ -786,7 +935,8 @@ figure {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 26px;
+  margin-top: auto;
+  padding-top: 26px;
 }
 .card__stack {
   display: flex;
@@ -822,14 +972,12 @@ figure {
 
 /* Destaque (Dewe): prancha larga */
 .card--featured {
-  width: min(1120px, 100%);
-  align-self: center !important;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
 }
 .card--featured .card__art {
   height: auto;
-  min-height: 520px;
+  min-height: 460px;
   border-bottom: 0;
   border-right: 1px solid var(--ink);
 }
@@ -863,13 +1011,7 @@ figure {
     border-right: 0;
     border-bottom: 1px solid var(--ink);
   }
-  .chapter__intro {
-    min-height: 150svh;
-    padding-top: 52svh;
-  }
-  .chapter__projects {
-    gap: 34svh;
-  }
+
 }
 
 /* Mapa de commits ------------------------------------------------------------ */

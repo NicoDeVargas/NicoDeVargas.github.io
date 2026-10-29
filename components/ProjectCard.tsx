@@ -7,7 +7,7 @@ function Detail({ chapter, project, index, featured }: { chapter: Chapter; proje
   if (project.media) {
     const m = project.media;
     return (
-      <div className="card__art" data-plate-reveal>
+      <div className="card__art">
         {m.type === "video" ? (
           <video src={asset(m.src)} poster={m.poster ? asset(m.poster) : undefined} muted loop playsInline autoPlay aria-label={m.alt} />
         ) : (
@@ -28,7 +28,7 @@ function Detail({ chapter, project, index, featured }: { chapter: Chapter; proje
   return (
     <div
       className="card__art"
-      data-plate-reveal
+
       style={{ "--z": zoom, "--x": x, "--y": y } as React.CSSProperties}
       aria-hidden="true"
     >
@@ -63,7 +63,7 @@ export function ProjectCard({ chapter, project, position }: { chapter: Chapter; 
   const index = `${chapter.numeral}.${position}`;
   const featured = project.featured;
   return (
-    <article className={`card${featured ? " card--featured" : ""}`} data-reveal aria-labelledby={`p-${project.slug}`}>
+    <article className={`card${featured ? " card--featured" : ""}`} aria-labelledby={`p-${project.slug}`}>
       <Detail chapter={chapter} project={project} index={index} featured={featured} />
       <div className="card__body">
         <p className="card__kicker">

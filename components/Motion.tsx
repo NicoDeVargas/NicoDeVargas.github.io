@@ -14,7 +14,7 @@ import { gsap, prefersReducedMotion, ScrollTrigger } from "@/lib/gsap";
 export function Motion() {
   useEffect(() => {
     const reduce = prefersReducedMotion();
-    document.documentElement.classList.add(reduce ? "motion-off" : "motion-on");
+    document.documentElement.classList.add(reduce ? "motion-off" : "motion-on", "hydrated");
     if (reduce) return;
 
     const ctx = gsap.context(() => {

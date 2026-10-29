@@ -17,19 +17,18 @@ Nos primeiros segundos o site precisa dizer três coisas: **curioso por várias 
 
 ## Estrutura
 
-1. **Capa** — hipogrifo do Doré em tela cheia (WebGL), gravado na tela ao carregar e com zoom lento ao rolar. Texto à direita sobre um véu creme lateral, para não lavar a arte. Título editável em `content/site.ts`. Botões "Ver projetos" e "Currículo". Logo abaixo, três números enormes que contam ao aparecer: commits em 2026 (duas contas), 1.000+ vendedores treinados, 4 áreas.
-2. **Quatro capítulos** (IA aplicada, Pesquisa de modelos, Games, Produtos e web), cada um com sua gravura em tela cheia presa ao fundo (`position: sticky`). Ao rolar, a gravura é gravada linha a linha e depois faz zoom lento; os projetos sobem por cima em pranchas creme com o número de destaque. Projetos sem número usam uma capitular serifada; projetos sem mídia usam um recorte ampliado da própria gravura (nunca caixa listrada). Dewe ganha prancha larga de destaque.
+1. **Capa** — hipogrifo do Doré em tela cheia (WebGL), gravado na tela uma vez ao carregar (~2 s). Texto à direita sobre um véu creme lateral, para não lavar a arte. Título editável em `content/site.ts`. Botões "Ver projetos" e "Currículo". Logo abaixo, três números enormes que contam ao aparecer: commits em 2026 (duas contas), 100+ vendedores treinados, 4 áreas. O tamanho dos números segue a largura do grid (`cqi`), igual nas três colunas, para caberem com folga de 375 a 1440 px.
+2. **Quatro capítulos** (IA aplicada, Pesquisa de modelos, Games, Produtos e web), cada um com uma seção de altura natural (~uma tela no desktop): a gravura de fundo é gravada pelo shader **uma vez** ao entrar na tela (1,2 s, sem amarrar ao scroll, sem pin), e os projetos da área ficam num **carrossel horizontal** (rolagem nativa com scroll-snap, setas, arrastar com o mouse, swipe, teclado ← → Home End, indicador "01 / 04" com traços clicáveis; sem autoplay). Revisão de 28/10: o dono achou cansativas as animações amarradas à rolagem; a página caiu de ~24.900 px para ~8.900 px no desktop. Cada cartão traz uma frase curta sobre o que é ou o resultado, sem receita técnica (stack só como tags), e o número de destaque. Projetos sem número usam uma capitular serifada; projetos sem mídia usam um recorte ampliado da própria gravura (nunca caixa listrada). Dewe ganha prancha larga de destaque.
 3. **Mapa de commits** de 2026 no formato do GitHub, em violeta, com total, melhor dia, maior sequência e mês mais ativo.
 4. **Sobre** curto com foto em duotone violeta.
 5. **Rodapé** no padrão das referências Evernote/Noetic/Hashi: papel creme em cima (logo, frase, e-mail grande, ícones em caixinhas, colunas serifadas de links e créditos) e, embaixo, uma paisagem larga do Doré ("Lavadeiras às margens do Tejo", *L'Espagne*, 1874) que nasce do papel (topo dissolvido por máscara, névoa creme), com parallax suave, pássaros em SVG e a linha de copyright por cima. A linha traz "Em Belo Horizonte, HH:MM" ao vivo (fuso de São Paulo).
-6. **Easter egg**: um passarinho gravado em violeta (SVG com hachura) pousa em bordas da página (`[data-perch]`), segue o cursor com o olhar, pisca e bica; foge voando para outro poleiro visível quando o mouse chega perto; no celular foge do toque e se assusta com rolagem rápida. Sem `pointer-events`, some com reduced motion.
 
 ## Decisões técnicas
 
 - Next.js (App Router, TypeScript), `output: "export"`, pronto para Vercel. Sem `next/image` (export estático): `<picture>` com AVIF + WebP em 4 larguras.
-- **Assinatura: shader de gravura** em WebGL puro (um quad, uma textura, sem biblioteca). A textura vem da própria `<img>` já carregada (sem download duplo). Revelação: a tela é dividida em linhas finas; cada linha é "riscada" da esquerda para a direita com atraso aleatório, os traços escuros aparecem primeiro como hachura que engrossa até virar a imagem inteira. Depois, zoom lento. Renderiza só quando o progresso muda (sem laço contínuo). Contextos WebGL criados perto da tela e liberados longe dela.
-- Fallbacks: sem WebGL → máscara CSS que desce com a rolagem + zoom em CSS; com `prefers-reduced-motion` → imagem estática, sem Lenis, sem animações de entrada, números já no valor final.
-- GSAP + ScrollTrigger para progresso e entradas; Lenis para rolagem suave (sem scroll-jacking: a página rola normal, o efeito só lê o progresso).
+- **Assinatura: shader de gravura** em WebGL puro (um quad, uma textura, sem biblioteca). A textura vem da própria `<img>` já carregada (sem download duplo). Revelação: a tela é dividida em linhas finas; cada linha é "riscada" da esquerda para a direita com atraso aleatório, os traços escuros aparecem primeiro como hachura que engrossa até virar a imagem inteira. Roda uma vez por gravura; ao terminar, o canvas é descartado e fica a `<img>` com o mesmo enquadramento (GPU liberada).
+- Fallbacks: sem WebGL → máscara CSS com o mesmo tempo; com `prefers-reduced-motion` → imagem estática, sem animações de entrada, carrossel sem rolagem suave, números já no valor final.
+- GSAP + ScrollTrigger só para entradas que disparam uma vez. Lenis removido: rolagem nativa, que também deixa o carrossel horizontal natural no trackpad e no toque.
 - Conteúdo centralizado em `content/site.ts` e `content/projects.ts`.
 - Commits: `scripts/fetch-contributions.mjs` consulta a GraphQL do GitHub (`viewer.contributionsCollection`) com `GITHUB_TOKEN_PESSOAL` e `GITHUB_TOKEN_EMPRESA`, soma os dois calendários e grava `content/contributions.json`. Nenhum nome de repositório é consultado nem gravado. Sem tokens, o repositório traz um JSON de exemplo com `"exemplo": true`, e o site sinaliza isso.
 - Hospedagem: Vercel ou GitHub Pages. `basePath`/`assetPrefix` vêm de `BASE_PATH` (vazio na Vercel e em site de usuário; `/<repo>` em repo de projeto); workflow `.github/workflows/pages.yml` com `actions/deploy-pages` e `.nojekyll`.
@@ -38,7 +37,7 @@ Nos primeiros segundos o site precisa dizer três coisas: **curioso por várias 
 ## Restrições
 
 - Todo texto em pt-BR. Nenhum nome de cliente da empresa; projetos descritos por setor.
-- Não inventar números: só os fornecidos pelo dono.
+- Não inventar números: só os fornecidos pelo dono. Sem valores em dólar no site (só o percentual de custo).
 - Celular (375px) e desktop; sem rolagem horizontal; contraste AA; foco visível; `alt` nas imagens.
 
 ## Em aberto

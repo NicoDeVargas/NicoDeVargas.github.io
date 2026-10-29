@@ -5,7 +5,6 @@ import { Footer } from "@/components/Footer";
 import { Hero, Stats } from "@/components/Hero";
 import { Motion } from "@/components/Motion";
 import { Nav } from "@/components/Nav";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { chapters } from "@/content/projects";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <a className="skip" href="#projetos">
         Pular para os projetos
       </a>
-      <SmoothScroll />
       <Motion />
       <Nav />
       <main>
