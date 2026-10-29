@@ -117,7 +117,10 @@ export const chapters: Chapter[] = [
         description: "Personagens de jogo que respondem com fala e uma ação válida para o jogo.",
         facts: ["97,5% das falas aprovadas pelo validador do jogo", "Achado: requantizar o modelo fundido derruba de 90% para 30%"],
         stack: ["Qwen3-8B", "PyTorch", "PEFT", "llama.cpp"],
-        links: [{ label: "Código", href: "https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora" }],
+        links: [
+          { label: "Código", href: "https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora" },
+          { label: "Modelo", href: "https://huggingface.co/NicoDeVargas/qwen3-8b-npc-dialogue-lora" },
+        ],
       },
       {
         slug: "benchmark-voz",

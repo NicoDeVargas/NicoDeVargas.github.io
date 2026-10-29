@@ -23,7 +23,7 @@ Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno d
 
 ## Projetos com código
 
-- [qwen3-npc-dialogue-lora](https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora): fine-tuning, avaliação e deploy com llama.cpp.
+- [qwen3-npc-dialogue-lora](https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora): fine-tuning, avaliação e deploy com llama.cpp. Modelo no [Hugging Face](https://huggingface.co/NicoDeVargas/qwen3-8b-npc-dialogue-lora).
 - [Fluente](https://github.com/NicoDeVargas/fluente-ia-avaliador-de-leitura): avalia a fluência de leitura de crianças palavra por palavra ([demo](https://fluente-black.vercel.app)).
 - [Sinal de Alarme](https://github.com/NicoDeVargas/sinal-de-alarme-AssemblyAI-Voice-Agent-Hackathon): treino por voz para sinais de alarme da dengue (hackathon AssemblyAI).
 
