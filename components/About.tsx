@@ -5,7 +5,7 @@ export function About() {
   const { about } = site;
   return (
     <section className="about" id="sobre" aria-labelledby="sobre-title">
-      <figure className="about__photo" data-plate-reveal data-perch="0.8">
+      <figure className="about__photo" data-plate-reveal>
         <Plate name="avatar" alt={about.photoAlt} sizes="(max-width: 760px) 60vw, 320px" />
       </figure>
       <div className="about__text">

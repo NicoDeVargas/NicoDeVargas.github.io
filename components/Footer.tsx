@@ -66,7 +66,7 @@ export function Footer() {
           <a className="footer__email" href={`mailto:${contact.email}`}>
             {contact.email}
           </a>
-          <ul className="footer__social" data-perch="0.9">
+          <ul className="footer__social">
             {social.map((s) => (
               <li key={s.label}>
                 <a href={s.href} aria-label={s.label} title={s.label} {...(s.icon === "mail" ? {} : ext)}>

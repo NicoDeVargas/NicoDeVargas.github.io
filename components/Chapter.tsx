@@ -21,7 +21,7 @@ export function Chapter({ chapter }: { chapter: ChapterType }) {
       </div>
       <div className="chapter__flow">
         <header className="chapter__intro">
-          <div className="cartouche" data-reveal data-perch="0.56">
+          <div className="cartouche" data-reveal>
             <span className="cartouche__numeral" aria-hidden="true">
               {chapter.numeral}
             </span>

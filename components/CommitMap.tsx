@@ -80,7 +80,7 @@ export function CommitMap() {
         </p>
       </div>
 
-      <div className="commits__map" data-reveal data-perch="0.97">
+      <div className="commits__map" data-reveal>
         <div className="heat__months" aria-hidden="true" style={{ "--weeks": m.weeks } as React.CSSProperties}>
           {m.monthCols.map((mc) => (
             <span key={mc.label} style={{ gridColumnStart: mc.col + 1 }}>

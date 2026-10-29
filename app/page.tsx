@@ -1,6 +1,5 @@
 import { About } from "@/components/About";
 import { Chapter } from "@/components/Chapter";
-import { Critter } from "@/components/Critter";
 import { CommitMap } from "@/components/CommitMap";
 import { Footer } from "@/components/Footer";
 import { Hero, Stats } from "@/components/Hero";
@@ -46,7 +45,6 @@ export default function Home() {
         <About />
       </main>
       <Footer />
-      <Critter />
     </>
   );
 }

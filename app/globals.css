@@ -219,8 +219,12 @@ figure {
   transition:
     background-color 0.5s var(--ease),
     padding 0.5s var(--ease),
-    border-color 0.5s var(--ease);
+    border-color 0.5s var(--ease),
+    transform 0.45s var(--ease);
   border-bottom: 1px solid transparent;
+}
+.nav.is-hidden {
+  transform: translateY(-110%);
 }
 .nav.is-scrolled {
   padding-block: 10px;
@@ -1395,58 +1399,6 @@ figure {
   }
   .footer__land {
     height: 600px;
-  }
-}
-
-/* Easter egg: passarinho ------------------------------------------------- */
-.critter {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 40;
-  width: 60px;
-  height: 52px;
-  pointer-events: none;
-  visibility: hidden;
-  will-change: transform;
-}
-.critter svg {
-  overflow: visible;
-}
-.critter__wing {
-  transform-box: view-box;
-}
-.critter__wing--front {
-  transform-origin: 34px 24px;
-}
-.critter__wing--back {
-  transform-origin: 34px 22px;
-}
-.critter.is-flying .critter__wing--front {
-  animation: critter-flap 0.14s ease-in-out infinite alternate;
-}
-.critter.is-flying .critter__wing--back {
-  animation: critter-flap-back 0.14s ease-in-out infinite alternate;
-}
-@keyframes critter-flap {
-  from {
-    transform: rotate(18deg) scaleY(0.9);
-  }
-  to {
-    transform: rotate(-72deg) scaleY(1.1);
-  }
-}
-@keyframes critter-flap-back {
-  from {
-    transform: rotate(10deg);
-  }
-  to {
-    transform: rotate(-55deg);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .critter {
-    display: none;
   }
 }
 

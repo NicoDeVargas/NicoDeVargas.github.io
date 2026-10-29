@@ -13,15 +13,27 @@ const links = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24);
+    // Some ao descer e volta ao subir; no rodapé fica escondido para não cobrir os contatos
+    let last = window.scrollY;
+    const footer = document.getElementById("contato");
+    const on = () => {
+      const y = window.scrollY;
+      const inFooter = footer ? footer.getBoundingClientRect().top < window.innerHeight * 0.5 : false;
+      setScrolled(y > 24);
+      if (Math.abs(y - last) > 6) {
+        setHidden(inFooter || (y > last && y > 160));
+        last = y;
+      }
+    };
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
   }, []);
 
   return (
-    <header className={`nav${scrolled ? " is-scrolled" : ""}`}>
+    <header onFocusCapture={() => setHidden(false)} className={`nav${scrolled ? " is-scrolled" : ""}${hidden ? " is-hidden" : ""}`}>
       <a className="nav__logo" href="#topo" aria-label={`${site.name}, voltar ao topo`}>
         <span className="nav__mark" aria-hidden="true">
           N<i>d</i>V

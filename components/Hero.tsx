@@ -17,7 +17,7 @@ export function Hero() {
       />
       <div className="hero__veil" aria-hidden="true" />
       <div className="hero__content">
-        <p className="eyebrow" data-perch="0.88">
+        <p className="eyebrow">
           {hero.eyebrow}
         </p>
         <h1 id="hero-title" className="hero__title" data-lines="load">
@@ -37,7 +37,7 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <p className="hero__caption" aria-hidden="true" data-perch="0.84">
+      <p className="hero__caption" aria-hidden="true">
         <span>Prancha I</span> Gustave Doré, <em>Orlando Furioso</em>, 1879
       </p>
     </section>
@@ -50,7 +50,7 @@ export function Stats() {
   };
   return (
     <section className="stats" id="numeros" aria-label="Em números">
-      <div className="stats__grid" data-perch="0.95">
+      <div className="stats__grid">
         {site.stats.map((s, i) => {
           const value = values[s.key] ?? s.value;
           const formatted = new Intl.NumberFormat("pt-BR").format(value);
