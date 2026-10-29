@@ -1,6 +1,7 @@
 import { About } from "@/components/About";
 import { Chapter } from "@/components/Chapter";
 import { CommitMap } from "@/components/CommitMap";
+import { FeaturedCase } from "@/components/FeaturedCase";
 import { Footer } from "@/components/Footer";
 import { Hero, Stats } from "@/components/Hero";
 import { Motion } from "@/components/Motion";
@@ -18,6 +19,7 @@ export default function Home() {
       <main>
         <Hero />
         <Stats />
+        <FeaturedCase />
         <div id="projetos" className="chapters">
           <div className="chapters__lead">
             <p className="eyebrow">Projetos · quatro capítulos</p>

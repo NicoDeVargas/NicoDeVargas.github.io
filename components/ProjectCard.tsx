@@ -27,7 +27,7 @@ function Highlight({ project }: { project: Project }) {
   }
   return (
     <p className="card__highlight">
-      <span className={`card__num${project.highlight.length > 9 || project.highlight.includes("→") ? " card__num--long" : ""}`}>{project.highlight}</span>
+      <span className={`card__num${project.highlight.includes("→") ? " card__num--long card__num--arrow" : project.highlight.length > 9 ? " card__num--long" : ""}`}>{project.highlight}</span>
       {project.highlightLabel ? <span className="card__numlabel">{project.highlightLabel}</span> : null}
     </p>
   );
@@ -74,11 +74,18 @@ export function ProjectCard({ chapter, project, position }: Props) {
           {project.links?.length ? (
             <div className="card__links">
               {project.links.map((l) => (
-                <a key={l.href} href={l.href} target="_blank" rel="noopener">
-                  {l.label}
-                  <span aria-hidden="true">↗</span>
-                  <span className="sr-only"> (abre em nova aba)</span>
-                </a>
+                l.href.startsWith("#") ? (
+                  <a key={l.href} href={l.href}>
+                    {l.label}
+                    <span aria-hidden="true">↑</span>
+                  </a>
+                ) : (
+                  <a key={l.href} href={l.href} target="_blank" rel="noopener">
+                    {l.label}
+                    <span aria-hidden="true">↗</span>
+                    <span className="sr-only"> (abre em nova aba)</span>
+                  </a>
+                )
               ))}
             </div>
           ) : null}

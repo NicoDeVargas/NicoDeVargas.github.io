@@ -175,10 +175,15 @@ export const chapters: Chapter[] = [
       {
         slug: "dewe",
         title: "Dewe",
-        kicker: "EdTech · simulações educacionais e clínicas",
-        description: "Plataforma EdTech de simulações educacionais e clínicas em tempo real com IA.",
-        // TODO(dono): confirmar a descrição acima, listar a stack e adicionar link e imagem/vídeo.
-        stack: ["IA em tempo real", "EdTech"],
+        kicker: "EdTech · simulação clínica com IA",
+        highlight: "96%",
+        highlightLabel: "de fidelidade do paciente simulado",
+        description: "Alunos de medicina atendem por voz um paciente simulado por IA e recebem uma avaliação comentada.",
+        stack: ["Next.js", "Gemini", "PostgreSQL"],
+        links: [
+          { label: "Estudo de caso", href: "#destaque" },
+          { label: "Site", href: "https://deweai.com" },
+        ],
       },
       {
         slug: "fluente",

@@ -4,6 +4,14 @@
 
 Trabalha com agentes de voz, RAG, treino e avaliação de modelos, jogos e produtos web, do protótipo à produção, sempre com resultado medido.
 
+## Projeto em destaque: Dewe (cofundador)
+
+Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno de medicina atende por voz um paciente simulado e recebe uma avaliação comentada com base nas diretrizes clínicas. Construída inteira por ele: voz em tempo real, avaliação por IA com rubrica e RAG, casos montados pelo professor numa entrevista com a IA, turmas e simulação seriada.
+
+- 96% de fidelidade do paciente simulado (5 casos, 3 repetições cada, roteiros com armadilhas).
+- Motor de voz em cadeia escolhido por medição: 96% contra 92% de acerto e 45% menos custo por consulta que a voz direta.
+- 1.000+ commits desde maio de 2026, 3.900 testes automatizados, 79 migrações de banco; bilíngue (PT/EN).
+
 ## Resultados
 
 - Simuladores de venda por voz com IA: −71% de custo por simulação; mais de 100 vendedores treinados.
