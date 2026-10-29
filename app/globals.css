@@ -402,23 +402,6 @@ figure {
   line-height: 1.55;
   color: var(--ink-2);
 }
-.hero__seeking {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 18px;
-  padding: 6px 14px;
-  border: 1px solid var(--ink);
-  background: var(--paper);
-  font-size: var(--t-sm);
-  color: var(--ink);
-}
-.hero__seeking-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ink);
-}
 .hero__actions {
   display: flex;
   flex-wrap: wrap;

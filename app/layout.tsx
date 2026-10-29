@@ -51,7 +51,6 @@ const person = {
   address: { "@type": "PostalAddress", addressLocality: "Belo Horizonte", addressRegion: "MG", addressCountry: "BR" },
   worksFor: { "@type": "Organization", name: "AI4Sellers" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "CEFET-MG" },
-  seeks: { "@type": "Demand", description: site.hero.seeking },
   knowsAbout: ["Agentes de voz", "RAG", "Fine-tuning de LLMs", "LoRA", "Avaliação de modelos", "AWS", "Next.js", "Python", "TypeScript", "Godot"],
   sameAs: [site.contact.linkedin, site.contact.github],
 };

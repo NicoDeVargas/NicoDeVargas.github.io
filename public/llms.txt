@@ -1,6 +1,6 @@
 # Nicolas de Vargas
 
-> Engenheiro de IA em Belo Horizonte (MG, Brasil). Estudante de Engenharia da Computação no CEFET-MG (formatura prevista para dez/2028) e desenvolvedor de IA na AI4Sellers, onde foi promovido de estagiário a júnior. Busca estágio em engenharia de IA.
+> Engenheiro de IA em Belo Horizonte (MG, Brasil). Estudante de Engenharia da Computação no CEFET-MG (formatura prevista para dez/2028) e desenvolvedor de IA na AI4Sellers, onde foi promovido de estagiário a júnior.
 
 Trabalha com agentes de voz, RAG, treino e avaliação de modelos, jogos e produtos web, do protótipo à produção, sempre com resultado medido.
 

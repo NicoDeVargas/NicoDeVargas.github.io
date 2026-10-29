@@ -14,7 +14,6 @@ export const site = {
     title: ["Engenheiro de IA.", "Levo ideias de protótipo a produto,", "e meço o resultado."],
     lede:
       "Estudante de Engenharia da Computação no CEFET-MG e desenvolvedor de IA na AI4Sellers. Trabalho com agentes de voz, RAG, treino de modelos, jogos e web.",
-    seeking: "Buscando estágio em engenharia de IA · formatura prevista para dez/2028",
     primary: { label: "Ver projetos", href: "#projetos" },
     secondary: { label: "Currículo", href: "/curriculo-nicolas-de-vargas.pdf" },
   },
