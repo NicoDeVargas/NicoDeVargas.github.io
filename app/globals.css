@@ -220,7 +220,7 @@ figure {
 }
 .nav.is-scrolled {
   padding-block: 10px;
-  background: rgba(var(--paper-rgb), 0.9);
+  background: rgba(var(--paper-rgb), 0.97);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom-color: var(--line);
@@ -236,26 +236,20 @@ figure {
   letter-spacing: 0.01em;
   white-space: nowrap;
 }
+/* Marca: o "N" serifado do favicon, num quadrado com fio */
 .nav__mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 46px;
+  width: 38px;
   height: 38px;
-  padding: 0 6px;
-  white-space: nowrap;
-  border: 1px solid var(--ink);
+  padding-top: 2px;
+  border: 1.5px solid var(--ink);
   background: var(--paper);
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
   line-height: 1;
-}
-.nav__mark i {
-  font-style: italic;
-  font-weight: 500;
-  margin: 0 0.04em;
 }
 .nav__links {
   display: flex;
@@ -268,7 +262,7 @@ figure {
   margin-left: -1px;
   padding: 8px 16px;
   border: 1px solid var(--ink);
-  background: rgba(var(--paper-rgb), 0.82);
+  background: var(--paper);
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -377,7 +371,7 @@ figure {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, rgba(var(--paper-rgb), 0.75), rgba(var(--paper-rgb), 0) 18%),
+    linear-gradient(to bottom, rgba(var(--paper-rgb), 0.94), rgba(var(--paper-rgb), 0.6) 9%, rgba(var(--paper-rgb), 0) 18%),
     linear-gradient(
       to left,
       rgba(var(--paper-rgb), 0.97) 0%,
@@ -419,8 +413,8 @@ figure {
   left: var(--gutter);
   bottom: clamp(20px, 4vh, 40px);
   padding: 7px 12px;
-  border: 1px solid var(--line-strong);
-  background: rgba(var(--paper-rgb), 0.86);
+  border: 1px solid var(--ink);
+  background: var(--paper);
   font-size: var(--t-xs);
   letter-spacing: 0.04em;
 }
@@ -446,9 +440,9 @@ figure {
       linear-gradient(
         to top,
         rgba(var(--paper-rgb), 0.98) 0%,
-        rgba(var(--paper-rgb), 0.95) 46%,
-        rgba(var(--paper-rgb), 0.55) 58%,
-        rgba(var(--paper-rgb), 0) 70%
+        rgba(var(--paper-rgb), 0.96) 58%,
+        rgba(var(--paper-rgb), 0.8) 66%,
+        rgba(var(--paper-rgb), 0) 80%
       );
   }
   .hero__caption {
@@ -588,7 +582,7 @@ figure {
   align-self: start;
   position: relative;
   padding: clamp(28px, 4vw, 52px) clamp(24px, 4vw, 56px) clamp(28px, 4vw, 48px);
-  background: rgba(var(--paper-rgb), 0.95);
+  background: var(--paper);
   border: 1px solid var(--ink);
   box-shadow: 10px 10px 0 -1px rgba(var(--paper-rgb), 0.9), 10px 10px 0 0 var(--ink);
 }
@@ -669,7 +663,7 @@ figure {
   scroll-snap-align: start;
 }
 .carousel__slide:has(.card--featured) {
-  width: min(900px, 88vw);
+  width: min(600px, 88vw);
 }
 .carousel__controls {
   grid-area: ctrl;
@@ -679,7 +673,7 @@ figure {
   gap: 18px;
   margin-bottom: 48px;
   padding: 14px 14px 14px 22px;
-  background: rgba(var(--paper-rgb), 0.95);
+  background: var(--paper);
   border: 1px solid var(--ink);
 }
 .carousel__count {
@@ -771,8 +765,8 @@ figure {
   z-index: 2;
   max-width: calc(100% - 2 * var(--gutter));
   padding: 6px 12px;
-  border: 1px solid var(--line-strong);
-  background: rgba(var(--paper-rgb), 0.88);
+  border: 1px solid var(--ink);
+  background: var(--paper);
   font-size: var(--t-xs);
 }
 .chapter__credit span {
@@ -792,56 +786,35 @@ figure {
   border: 1px solid var(--ink);
   box-shadow: 0 30px 80px -40px rgba(31, 22, 110, 0.45);
 }
-.card__art {
+/* Mídia opcional (vídeo/print) no topo do cartão */
+.card__media {
   position: relative;
-  height: clamp(170px, 22vw, 230px);
+  flex: none;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-bottom: 1px solid var(--ink);
-  background: var(--mid);
+  background: var(--paper-deep);
 }
-.card__art picture {
-  position: absolute;
-  inset: 0;
-}
-.card__art img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: calc(var(--z, 2) * 100%);
-  max-width: none;
-  height: auto;
-  transform: translate(calc(var(--x, 0.5) * -100%), calc(var(--y, 0.5) * -100%));
-  transform-origin: center;
-}
-.card__art video,
-.card__art > img {
+.card__media video,
+.card__media img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: none;
 }
-.card__index {
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  padding: 4px 10px;
-  border: 1px solid var(--ink);
-  background: var(--paper);
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+.card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
-.card__art {
+.card__counter {
   flex: none;
-}
-.carousel__slide .card__art {
-  height: clamp(140px, 13vw, 180px);
-}
-.carousel__slide .card--featured .card__art {
-  height: auto;
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
 }
 .card__body {
   display: flex;
@@ -970,25 +943,23 @@ figure {
   text-decoration-thickness: 2px;
 }
 
-/* Destaque (Dewe): prancha larga */
+/* Destaque (Dewe): cartão em tinta cheia, letras em papel */
 .card--featured {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  background: var(--ink);
+  color: var(--paper);
 }
-.card--featured .card__art {
-  height: auto;
-  min-height: 460px;
-  border-bottom: 0;
-  border-right: 1px solid var(--ink);
+.card--featured .card__kicker,
+.card--featured .card__counter,
+.card--featured .card__desc {
+  color: var(--paper);
 }
-.card--featured .card__body {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(28px, 4.4vw, 64px);
+.card--featured .card__badge {
+  background: var(--paper);
+  color: var(--ink);
 }
 .card--featured .card__title {
-  margin: 28px 0 8px;
-  font-size: clamp(4.5rem, 3rem + 6vw, 9rem);
+  margin: 36px 0 18px;
+  font-size: clamp(4.5rem, 3rem + 5vw, 8rem);
   font-weight: 500;
   font-style: italic;
   line-height: 0.85;
@@ -996,22 +967,14 @@ figure {
 }
 .card--featured .card__desc {
   font-size: var(--t-lg);
-  max-width: 28em;
+  max-width: 26em;
 }
-.card--featured .card__foot {
-  margin-top: auto;
-  padding-top: 32px;
+.card--featured .card__stack li {
+  border-color: rgba(var(--paper-rgb), 0.6);
+  color: var(--paper);
 }
-@media (max-width: 760px) {
-  .card--featured {
-    grid-template-columns: 1fr;
-  }
-  .card--featured .card__art {
-    min-height: 260px;
-    border-right: 0;
-    border-bottom: 1px solid var(--ink);
-  }
-
+.card--featured .card__links a {
+  color: var(--paper);
 }
 
 /* Mapa de commits ------------------------------------------------------------ */
@@ -1302,9 +1265,9 @@ figure {
   text-decoration: none;
 }
 .footer__logo .nav__mark {
-  min-width: 58px;
+  width: 48px;
   height: 48px;
-  font-size: 1.25rem;
+  font-size: 1.875rem;
 }
 .footer__line {
   max-width: 17em;
@@ -1427,26 +1390,21 @@ figure {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(120% 55% at 50% 38%, rgba(var(--paper-rgb), 0.55), rgba(var(--paper-rgb), 0) 60%),
-    linear-gradient(to top, rgba(var(--paper-rgb), 0.92) 0%, rgba(var(--paper-rgb), 0.35) 11%, rgba(var(--paper-rgb), 0) 22%);
+    radial-gradient(120% 55% at 50% 38%, rgba(var(--paper-rgb), 0.55), rgba(var(--paper-rgb), 0) 60%);
 }
 .footer__copy {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: clamp(18px, 3vw, 36px);
+  position: relative;
   z-index: 3;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 8px 18px;
-  padding: 0 var(--gutter);
+  padding: 20px var(--gutter) 22px;
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
   font-size: var(--t-sm);
   text-align: center;
-  text-shadow:
-    0 0 12px var(--paper),
-    0 0 4px var(--paper);
 }
 .footer__sep {
   width: 1px;
@@ -1531,16 +1489,12 @@ figure {
   }
   .footer__copy {
     flex-direction: column;
-    gap: 2px;
-    font-size: 0.75rem;
-  }
-  .footer__mist {
-    background:
-      radial-gradient(120% 55% at 50% 38%, rgba(var(--paper-rgb), 0.5), rgba(var(--paper-rgb), 0) 60%),
-      linear-gradient(to top, var(--paper) 0%, rgba(var(--paper-rgb), 0.92) 16%, rgba(var(--paper-rgb), 0) 34%);
+    gap: 4px;
+    padding-block: 18px 20px;
+    font-size: 0.8125rem;
   }
   .footer__land {
-    height: 600px;
+    height: 480px;
   }
 }
 

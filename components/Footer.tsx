@@ -58,7 +58,7 @@ export function Footer() {
         <div className="footer__brand">
           <a className="footer__logo" href="#topo">
             <span className="nav__mark" aria-hidden="true">
-              N<i>d</i>V
+              N
             </span>
             {site.name}
           </a>
@@ -140,14 +140,15 @@ export function Footer() {
         </div>
         <div className="footer__mist" aria-hidden="true" />
         <Birds />
-        <p className="footer__copy">
-          <span>© {year} {site.name}</span>
-          <span className="footer__sep" aria-hidden="true" />
-          <Clock />
-          <span className="footer__sep" aria-hidden="true" />
-          <span>Feito à mão com Next.js, WebGL e gravuras de Gustave Doré</span>
-        </p>
       </div>
+      {/* Linha de copyright fora da gravura, numa faixa de papel: contraste pleno */}
+      <p className="footer__copy">
+        <span>© {year} {site.name}</span>
+        <span className="footer__sep" aria-hidden="true" />
+        <Clock />
+        <span className="footer__sep" aria-hidden="true" />
+        <span>Feito à mão com Next.js, WebGL e gravuras de Gustave Doré</span>
+      </p>
     </footer>
   );
 }

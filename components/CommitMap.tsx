@@ -46,9 +46,13 @@ function buildModel(days: Day[], year: number) {
   const total = days.reduce((s, d) => s + d.total, 0);
   const active = days.filter((d) => d.total > 0).length;
   const best = days.reduce((b, d) => (d.total > b.total ? d : b), { data: "", total: 0 });
-  let streak = 0, run = 0;
+  // Sequência por datas de calendário (o JSON pode omitir os dias sem commit)
+  let streak = 0, run = 0, prev = 0;
   for (const d of days) {
-    run = d.total > 0 ? run + 1 : 0;
+    if (d.total <= 0) continue;
+    const t = Date.parse(`${d.data}T00:00:00Z`);
+    run = prev && t - prev === 864e5 ? run + 1 : 1;
+    prev = t;
     streak = Math.max(streak, run);
   }
   const perMonth = new Array(12).fill(0);
@@ -61,7 +65,7 @@ function buildModel(days: Day[], year: number) {
 export function CommitMap() {
   const year = contributions.ano;
   const m = buildModel(contributions.dias as Day[], year);
-  const summary = `${fmt.format(m.total)} contribuições em ${year}, em ${m.active} dias diferentes. Maior sequência: ${m.streak} dias seguidos.`;
+  const summary = `${fmt.format(m.total)} commits em ${year}, em ${m.active} dias diferentes. Maior sequência: ${m.streak} dias seguidos.`;
 
   return (
     <section className="commits" id="commits" aria-labelledby="commits-title">
@@ -75,8 +79,8 @@ export function CommitMap() {
           </h2>
         </div>
         <p className="commits__lede" data-reveal>
-          Cada quadrado é um dia, somando a conta pessoal e a da empresa. Repositórios privados entram só como
-          número.
+          Cada quadrado é um dia de 2026, somando projetos pessoais e da empresa. Repositórios privados entram
+          só como número.
         </p>
       </div>
 
@@ -109,7 +113,7 @@ export function CommitMap() {
               <i
                 key={c.date}
                 className={c.out ? "o" : c.future ? "f" : `l${c.level}`}
-                title={c.out || c.future ? undefined : `${c.v} ${c.v === 1 ? "contribuição" : "contribuições"} em ${longDate(c.date)}`}
+                title={c.out || c.future ? undefined : `${c.v} ${c.v === 1 ? "commit" : "commits"} em ${longDate(c.date)}`}
               />
             ))}
           </div>
@@ -127,7 +131,7 @@ export function CommitMap() {
 
       <dl className="commits__facts">
         <div data-reveal>
-          <dt>contribuições no ano</dt>
+          <dt>commits no ano</dt>
           <dd>
             <span data-count={m.total}>{fmt.format(m.total)}</span>
           </dd>

@@ -28,19 +28,32 @@ Projetos sem número de destaque usam uma capitular; sem mídia, usam um recorte
 
 Pendências marcadas com `TODO(dono)` no conteúdo: stack, link e imagem do Dewe; prints e links de Deletrica e Cafelipe; domínio final em `site.url`.
 
-## Commits reais (duas contas)
+## Commits reais
 
-O site lê `content/contributions.json`. O arquivo do repositório é de **exemplo** (`"exemplo": true`) e o site avisa isso na tela. Para gravar os números reais:
+O site lê `content/contributions.json` (número da capa e mapa de commits). Quando o arquivo tem `"exemplo": true`, o site mostra um aviso; com dados reais (`"exemplo": false`) o aviso some.
+
+### Forma principal: histórico git local
+
+O GitHub não atribui à conta boa parte dos commits privados da empresa, então a fonte mais fiel é o histórico git das pastas locais:
 
 ```bash
-GITHUB_TOKEN_PESSOAL=ghp_... GITHUB_TOKEN_EMPRESA=ghp_... npm run contributions   # ano corrente
-GITHUB_TOKEN_PESSOAL=... GITHUB_TOKEN_EMPRESA=... node scripts/fetch-contributions.mjs 2026
+AUTORES="email1@exemplo.com,email2@exemplo.com" node scripts/count-local-commits.mjs ~/Documentos/Dev [outra-pasta ...] --ano 2026
 npm run build
 ```
 
-- Cada token deve ser da própria conta (NicoDeVargas e Ai4Sellers-Git). Um token clássico com `read:user` basta; para contar repositórios privados, ele precisa enxergá-los (ou ative "Include private contributions" no perfil).
-- O script consulta `viewer.contributionsCollection` na GraphQL API, soma os dois calendários e grava `exemplo: false`. Nenhum nome de repositório é consultado nem gravado.
-- O número grande da capa usa `totalCommitContributions` (só commits); o mapa usa o calendário de contribuições (commits, PRs, issues e revisões), como o GitHub.
+- `AUTORES`: e-mails de autor que contam como seus (pessoal e da empresa).
+- Procura repositórios até 3 níveis abaixo de cada pasta, inclui todas as branches e conta cada commit uma vez (pelo hash), mesmo em clones e worktrees.
+- Grava só datas e contagens: nenhum nome de repositório nem mensagem de commit.
+
+### Alternativa: API do GitHub (duas contas)
+
+```bash
+GITHUB_TOKEN_PESSOAL=ghp_... GITHUB_TOKEN_EMPRESA=ghp_... npm run contributions
+npm run build
+```
+
+- Cada token deve ser da própria conta (NicoDeVargas e Ai4Sellers-Git), com `read:user`; para contar privados, o token precisa enxergá-los.
+- Consulta `viewer.contributionsCollection` na GraphQL API e soma os dois calendários. Fica abaixo do número real quando há commits privados não atribuídos.
 
 ## Imagens
 

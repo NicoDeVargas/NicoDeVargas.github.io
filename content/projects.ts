@@ -3,8 +3,8 @@
  *
  * - `highlight`: o número de destaque (ex.: "−71%"). Sem número? Deixe vazio e
  *   o cartão usa uma capitular (a inicial do projeto).
- * - `media`: vídeo/print do projeto. Sem mídia, o cartão mostra um recorte
- *   ampliado da gravura do capítulo (`detail`).
+ * - `media`: vídeo/print do projeto (opcional). Sem mídia, o cartão é só
+ *   texto: setor, número, nome, frase e tags.
  * - Nunca coloque nome de cliente: descreva pelo setor.
  */
 
@@ -26,8 +26,6 @@ export type Project = {
   links?: Link[];
   /** Mídia opcional (caminho em /public). */
   media?: { type: "video" | "image"; src: string; alt: string; poster?: string };
-  /** Recorte da gravura usado quando não há mídia: centro (0–1) e ampliação. */
-  detail?: { x: number; y: number; zoom: number };
   /** Prancha larga de destaque. */
   featured?: boolean;
 };
@@ -67,7 +65,6 @@ export const chapters: Chapter[] = [
         description: "Vendedores treinam conversando por voz com um cliente simulado.",
         facts: ["Mais de 100 vendedores treinados"],
         stack: ["Next.js", "Gemini", "ElevenLabs", "AWS"],
-        detail: { x: 0.36, y: 0.5, zoom: 2.6 },
       },
       {
         slug: "rag-grafos",
@@ -77,7 +74,6 @@ export const chapters: Chapter[] = [
         highlightLabel: "alucinação de produtos",
         description: "Copiloto de vendas B2B que responde sobre o catálogo sem inventar produto, medido em 1.000 perguntas.",
         stack: ["PostgreSQL", "Grafos", "RAG"],
-        detail: { x: 0.53, y: 0.14, zoom: 3 },
       },
       {
         slug: "agente-crm",
@@ -88,7 +84,6 @@ export const chapters: Chapter[] = [
         description: "Depois de cada reunião, a IA entrevista o vendedor por voz e preenche o CRM.",
         facts: ["Campos vazios no CRM: 45% → 0%"],
         stack: ["Agentes de voz", "LLM", "CRM"],
-        detail: { x: 0.27, y: 0.86, zoom: 2.4 },
       },
       {
         slug: "aws-multicliente",
@@ -99,7 +94,6 @@ export const chapters: Chapter[] = [
         description: "Uma base única que atende vários clientes isolados.",
         facts: ["~60% menos custo de AWS nos pilotos"],
         stack: ["ECS", "RDS", "S3", "Lambda", "CloudFormation", "CDK"],
-        detail: { x: 0.8, y: 0.3, zoom: 2.2 },
       },
     ],
   },
@@ -124,7 +118,6 @@ export const chapters: Chapter[] = [
         facts: ["97,5% das falas aprovadas pelo validador do jogo", "Achado: requantizar o modelo fundido derruba de 90% para 30%"],
         stack: ["Qwen3-8B", "PyTorch", "PEFT", "llama.cpp"],
         links: [{ label: "Código", href: "https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora" }],
-        detail: { x: 0.6, y: 0.45, zoom: 2.4 },
       },
       {
         slug: "benchmark-voz",
@@ -134,7 +127,6 @@ export const chapters: Chapter[] = [
         highlightLabel: "motores × ataques de prompt",
         description: "Três motores de voz comparados em custo, latência e resistência a 12 ataques de prompt.",
         stack: ["STT", "LLM", "TTS", "Avaliação"],
-        detail: { x: 0.5, y: 0.78, zoom: 2.2 },
       },
     ],
   },
@@ -157,7 +149,6 @@ export const chapters: Chapter[] = [
         highlightLabel: "IA rodando no computador do jogador",
         description: "RPG em Godot em que os personagens conversam com um modelo treinado por mim, rodando no computador do jogador.",
         stack: ["Godot", "llama.cpp", "LoRA"],
-        detail: { x: 0.55, y: 0.55, zoom: 2.4 },
       },
       {
         slug: "travessia-ia",
@@ -167,7 +158,6 @@ export const chapters: Chapter[] = [
         highlightLabel: "do zero ao telão",
         description: "Jogo ao vivo no telão, com votação pelo celular, para cerca de 25 executivos.",
         stack: ["Next.js", "Tempo real"],
-        detail: { x: 0.25, y: 0.3, zoom: 2.2 },
       },
     ],
   },
@@ -190,7 +180,6 @@ export const chapters: Chapter[] = [
         // TODO(dono): confirmar a descrição acima, listar a stack e adicionar link e imagem/vídeo.
         stack: ["IA em tempo real", "EdTech"],
         featured: true,
-        detail: { x: 0.58, y: 0.48, zoom: 2 },
       },
       {
         slug: "fluente",
@@ -204,7 +193,6 @@ export const chapters: Chapter[] = [
           { label: "Demo", href: "https://fluente-black.vercel.app" },
           { label: "Código", href: "https://github.com/NicoDeVargas/fluente-ia-avaliador-de-leitura" },
         ],
-        detail: { x: 0.3, y: 0.2, zoom: 2.6 },
       },
       {
         slug: "sinal-de-alarme",
@@ -218,7 +206,6 @@ export const chapters: Chapter[] = [
             href: "https://github.com/NicoDeVargas/sinal-de-alarme-AssemblyAI-Voice-Agent-Hackathon",
           },
         ],
-        detail: { x: 0.75, y: 0.75, zoom: 2.6 },
       },
       {
         slug: "landing-pages",
@@ -227,7 +214,6 @@ export const chapters: Chapter[] = [
         description: "Landing pages feitas de ponta a ponta.",
         // TODO(dono): adicionar print (media) e links das duas páginas.
         stack: ["Web", "Landing page"],
-        detail: { x: 0.2, y: 0.8, zoom: 2.4 },
       },
     ],
   },

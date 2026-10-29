@@ -36,7 +36,7 @@ export function Nav() {
     <header onFocusCapture={() => setHidden(false)} className={`nav${scrolled ? " is-scrolled" : ""}${hidden ? " is-hidden" : ""}`}>
       <a className="nav__logo" href="#topo" aria-label={`${site.name}, voltar ao topo`}>
         <span className="nav__mark" aria-hidden="true">
-          N<i>d</i>V
+          N
         </span>
         <span className="nav__name">{site.name}</span>
       </a>
