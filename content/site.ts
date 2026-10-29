@@ -13,7 +13,7 @@ export const site = {
     // Título da capa. Cada item vira uma linha no desktop.
     title: ["Engenheiro de IA.", "Levo ideias de protótipo a produto,", "e meço o resultado."],
     lede:
-      "Estudante de Engenharia da Computação no CEFET-MG e desenvolvedor de IA na AI4Sellers. Curioso por quase tudo: voz, RAG, treino de modelos, jogos e web.",
+      "Estudante de Engenharia da Computação no CEFET-MG e desenvolvedor de IA na AI4Sellers. Trabalho com agentes de voz, RAG, treino de modelos, jogos e web.",
     primary: { label: "Ver projetos", href: "#projetos" },
     secondary: { label: "Currículo", href: "/curriculo-nicolas-de-vargas.pdf" },
   },
