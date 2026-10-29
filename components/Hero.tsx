@@ -26,6 +26,10 @@ export function Hero() {
         <p className="hero__lede" data-reveal data-delay="0.6">
           {hero.lede}
         </p>
+        <p className="hero__seeking" data-reveal data-delay="0.68">
+          <span className="hero__seeking-dot" aria-hidden="true" />
+          {hero.seeking}
+        </p>
         <div className="hero__actions" data-reveal data-delay="0.75">
           <a className="btn btn--solid" href={hero.primary.href}>
             {hero.primary.label}

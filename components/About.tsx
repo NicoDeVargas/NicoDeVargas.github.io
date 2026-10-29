@@ -24,8 +24,12 @@ export function About() {
             <dd>Desenvolvedor de IA na AI4Sellers</dd>
           </div>
           <div>
+            <dt>Busco</dt>
+            <dd>Estágio em engenharia de IA</dd>
+          </div>
+          <div>
             <dt>Estudo</dt>
-            <dd>Engenharia da Computação, CEFET-MG</dd>
+            <dd>Engenharia da Computação, CEFET-MG (formatura prevista para dez/2028)</dd>
           </div>
           <div>
             <dt>Base</dt>

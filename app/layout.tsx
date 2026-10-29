@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     images: [{ url: asset("/img/hippogriff-1440.webp"), width: 1440, alt: "Gravura do hipogrifo de Gustave Doré em violeta" }],
   },
+  alternates: { canonical: "/" },
   icons: { icon: asset("/favicon.svg") },
 };
 
@@ -36,6 +37,23 @@ export const viewport: Viewport = {
   themeColor: "#fbf8ec",
   width: "device-width",
   initialScale: 1,
+};
+
+// Dados estruturados para buscadores e IAs que leem a página.
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  jobTitle: "Engenheiro de IA",
+  description: site.description,
+  email: `mailto:${site.contact.email}`,
+  address: { "@type": "PostalAddress", addressLocality: "Belo Horizonte", addressRegion: "MG", addressCountry: "BR" },
+  worksFor: { "@type": "Organization", name: "AI4Sellers" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "CEFET-MG" },
+  seeks: { "@type": "Demand", description: site.hero.seeking },
+  knowsAbout: ["Agentes de voz", "RAG", "Fine-tuning de LLMs", "LoRA", "Avaliação de modelos", "AWS", "Next.js", "Python", "TypeScript", "Godot"],
+  sameAs: [site.contact.linkedin, site.contact.github],
 };
 
 // Marca a página como "com JS" antes da pintura, para esconder as gravuras
@@ -47,6 +65,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="pt-BR" className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: boot }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
       </head>
       <body>{children}</body>
     </html>

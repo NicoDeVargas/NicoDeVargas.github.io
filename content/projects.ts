@@ -123,8 +123,8 @@ export const chapters: Chapter[] = [
         slug: "benchmark-voz",
         title: "Benchmark de motores de voz",
         kicker: "Avaliação · custo, latência e segurança",
-        highlight: "3 × 12",
-        highlightLabel: "motores × ataques de prompt",
+        highlight: "12",
+        highlightLabel: "ataques de prompt testados em 3 motores de voz",
         description: "Três motores de voz comparados em custo, latência e resistência a 12 ataques de prompt.",
         stack: ["STT", "LLM", "TTS", "Avaliação"],
       },
@@ -179,7 +179,6 @@ export const chapters: Chapter[] = [
         description: "Plataforma EdTech de simulações educacionais e clínicas em tempo real com IA.",
         // TODO(dono): confirmar a descrição acima, listar a stack e adicionar link e imagem/vídeo.
         stack: ["IA em tempo real", "EdTech"],
-        featured: true,
       },
       {
         slug: "fluente",
