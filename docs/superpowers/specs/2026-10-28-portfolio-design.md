@@ -21,7 +21,8 @@ Nos primeiros segundos o site precisa dizer três coisas: **curioso por várias 
 2. **Quatro capítulos** (IA aplicada, Pesquisa de modelos, Games, Produtos e web), cada um com sua gravura em tela cheia presa ao fundo (`position: sticky`). Ao rolar, a gravura é gravada linha a linha e depois faz zoom lento; os projetos sobem por cima em pranchas creme com o número de destaque. Projetos sem número usam uma capitular serifada; projetos sem mídia usam um recorte ampliado da própria gravura (nunca caixa listrada). Dewe ganha prancha larga de destaque.
 3. **Mapa de commits** de 2026 no formato do GitHub, em violeta, com total, melhor dia, maior sequência e mês mais ativo.
 4. **Sobre** curto com foto em duotone violeta.
-5. **Rodapé** com e-mail grande, LinkedIn, GitHub, currículo, créditos das gravuras e uma faixa de gravura com pássaros animados.
+5. **Rodapé** no padrão das referências Evernote/Noetic/Hashi: papel creme em cima (logo, frase, e-mail grande, ícones em caixinhas, colunas serifadas de links e créditos) e, embaixo, uma paisagem larga do Doré ("Lavadeiras às margens do Tejo", *L'Espagne*, 1874) que nasce do papel (topo dissolvido por máscara, névoa creme), com parallax suave, pássaros em SVG e a linha de copyright por cima. A linha traz "Em Belo Horizonte, HH:MM" ao vivo (fuso de São Paulo).
+6. **Easter egg**: um passarinho gravado em violeta (SVG com hachura) pousa em bordas da página (`[data-perch]`), segue o cursor com o olhar, pisca e bica; foge voando para outro poleiro visível quando o mouse chega perto; no celular foge do toque e se assusta com rolagem rápida. Sem `pointer-events`, some com reduced motion.
 
 ## Decisões técnicas
 
@@ -31,6 +32,7 @@ Nos primeiros segundos o site precisa dizer três coisas: **curioso por várias 
 - GSAP + ScrollTrigger para progresso e entradas; Lenis para rolagem suave (sem scroll-jacking: a página rola normal, o efeito só lê o progresso).
 - Conteúdo centralizado em `content/site.ts` e `content/projects.ts`.
 - Commits: `scripts/fetch-contributions.mjs` consulta a GraphQL do GitHub (`viewer.contributionsCollection`) com `GITHUB_TOKEN_PESSOAL` e `GITHUB_TOKEN_EMPRESA`, soma os dois calendários e grava `content/contributions.json`. Nenhum nome de repositório é consultado nem gravado. Sem tokens, o repositório traz um JSON de exemplo com `"exemplo": true`, e o site sinaliza isso.
+- Hospedagem: Vercel ou GitHub Pages. `basePath`/`assetPrefix` vêm de `BASE_PATH` (vazio na Vercel e em site de usuário; `/<repo>` em repo de projeto); workflow `.github/workflows/pages.yml` com `actions/deploy-pages` e `.nojekyll`.
 - Imagens: `scripts/process-images.py` (download + recolorização em PIL) e `scripts/build-images.mjs` (sharp → AVIF/WebP responsivos).
 
 ## Restrições
