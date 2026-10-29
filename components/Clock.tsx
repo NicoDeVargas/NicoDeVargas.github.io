@@ -20,7 +20,7 @@ export function Clock() {
   return (
     <span className="clock">
       <span className="clock__dot" aria-hidden="true" />
-      Em Belo Horizonte,{" "}
+      <span>Em Belo Horizonte,</span>
       <time dateTime={now?.toISOString()} suppressHydrationWarning>
         {now ? fmt.format(now) : "--:--"}
       </time>
