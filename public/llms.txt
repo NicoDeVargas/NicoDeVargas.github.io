@@ -18,11 +18,13 @@ Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno d
 - RAG híbrido com grafos num copiloto de vendas B2B: alucinação de produtos de 40% para 0%, medida em 1.000 perguntas.
 - Agente de CRM por voz: registro pós-reunião de 10–20 min para 2 min; campos vazios de 45% para 0%.
 - Arquitetura AWS multi-cliente desenhada por ele: ~60% menos custo nos pilotos; cliente novo em 2 dias.
+- Radar de avaliações para e-commerce: BERTimbau destilado do Claude Opus, 87% de acerto (igual ao professor) rodando no navegador, sem custo por avaliação.
 - Fine-tuning LoRA do Qwen3-8B para NPCs de jogo: ações corretas de 11% para 93%.
 - Benchmark de motores de voz: 12 ataques de prompt testados em 3 motores, além de custo e latência.
 
 ## Projetos com código
 
+- [Radar de avaliações](https://github.com/NicoDeVargas/ecommerce-classificator): transforma avaliações de clientes em ações para o vendedor (anúncio, lote, logística, fila de respostas). [App](https://nicodevargas.github.io/ecommerce-classificator/) e modelo no [Hugging Face](https://huggingface.co/NicoDeVargas/radar-avaliacoes-bertimbau).
 - [qwen3-npc-dialogue-lora](https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora): fine-tuning, avaliação e deploy com llama.cpp. Modelo no [Hugging Face](https://huggingface.co/NicoDeVargas/qwen3-8b-npc-dialogue-lora).
 - [Fluente](https://github.com/NicoDeVargas/fluente-ia-avaliador-de-leitura): avalia a fluência de leitura de crianças palavra por palavra ([demo](https://fluente-black.vercel.app)).
 - [Sinal de Alarme](https://github.com/NicoDeVargas/sinal-de-alarme-AssemblyAI-Voice-Agent-Hackathon): treino por voz para sinais de alarme da dengue (hackathon AssemblyAI).

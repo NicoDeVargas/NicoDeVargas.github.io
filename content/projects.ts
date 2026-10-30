@@ -109,6 +109,25 @@ export const chapters: Chapter[] = [
     plateTitle: "Paraíso Perdido, livro III",
     projects: [
       {
+        slug: "radar-avaliacoes",
+        title: "Radar de avaliações",
+        kicker: "E-commerce · modelo destilado rodando no navegador",
+        highlight: "87%",
+        highlightLabel: "de acerto, igual ao LLM professor, a custo zero por avaliação",
+        description:
+          "Lê todas as avaliações de uma loja e aponta o anúncio a corrigir, o lote com defeito e o estado onde a entrega falha.",
+        facts: [
+          "BERTimbau treinado com rótulos do Claude Opus e quantizado para int8",
+          "Classifica no navegador: as avaliações não saem do computador",
+        ],
+        stack: ["BERTimbau", "ONNX", "transformers.js", "React"],
+        links: [
+          { label: "App", href: "https://nicodevargas.github.io/ecommerce-classificator/" },
+          { label: "Código", href: "https://github.com/NicoDeVargas/ecommerce-classificator" },
+          { label: "Modelo", href: "https://huggingface.co/NicoDeVargas/radar-avaliacoes-bertimbau" },
+        ],
+      },
+      {
         slug: "qwen3-npc-lora",
         title: "Fine-tuning do Qwen3-8B para NPCs",
         kicker: "LoRA · NPCs que devolvem ações em JSON",
