@@ -2,7 +2,7 @@
 
 > Engenheiro de IA em Belo Horizonte (MG, Brasil). Estudante de Engenharia da Computação no CEFET-MG (formatura prevista para dez/2028) e desenvolvedor de IA na AI4Sellers, onde foi promovido de estagiário a júnior.
 
-Trabalha com agentes de voz, RAG, treino e avaliação de modelos, jogos e produtos web, do protótipo à produção, sempre com resultado medido.
+Trabalha com agentes de voz, RAG, treino e avaliação de modelos e produtos web, do protótipo à produção, sempre com resultado medido.
 
 ## Projeto mais completo: Dewe (cofundador)
 
@@ -31,7 +31,7 @@ Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno d
 
 ## Stack
 
-Python, TypeScript, Next.js, React, PostgreSQL, AWS (ECS, RDS, S3, Lambda, CloudFormation/CDK), PyTorch, PEFT, llama.cpp, Claude, Gemini, OpenAI, LangChain, n8n, Godot.
+Python, TypeScript, Next.js, React, PostgreSQL, AWS (ECS, RDS, S3, Lambda, CloudFormation/CDK), PyTorch, PEFT, llama.cpp, Claude, Gemini, OpenAI, LangChain, n8n.
 
 ## Links
 

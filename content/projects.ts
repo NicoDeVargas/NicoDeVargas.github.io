@@ -153,39 +153,8 @@ export const chapters: Chapter[] = [
     ],
   },
   {
-    id: "games",
-    numeral: "III",
-    title: "Games",
-    subtitle: "Onde testo IA de verdade",
-    intro:
-      "Jogo é o laboratório mais honesto: se o modelo erra, o jogador vê na hora.",
-    plate: "idylls",
-    focus: [0.5, 0.55],
-    plateTitle: "Idílios do Rei",
-    projects: [
-      {
-        slug: "rpg-labirinto",
-        title: "RPG Labirinto",
-        kicker: "Godot · diálogos gerados por IA",
-        highlight: "100% local",
-        highlightLabel: "IA rodando no computador do jogador",
-        description: "RPG em Godot em que os personagens conversam com um modelo treinado por mim, rodando no computador do jogador.",
-        stack: ["Godot", "llama.cpp", "LoRA"],
-      },
-      {
-        slug: "travessia-ia",
-        title: "Travessia IA",
-        kicker: "Jogo ao vivo · evento corporativo",
-        highlight: "1 noite",
-        highlightLabel: "do zero ao telão",
-        description: "Jogo ao vivo no telão, com votação pelo celular, para cerca de 25 executivos.",
-        stack: ["Next.js", "Tempo real"],
-      },
-    ],
-  },
-  {
     id: "produtos-web",
-    numeral: "IV",
+    numeral: "III",
     title: "Produtos e web",
     subtitle: "Apps e landing pages",
     intro:

@@ -6,14 +6,14 @@ export const site = {
   name: "Nicolas de Vargas",
   url: "https://nicodevargas.github.io", // TODO(dono): trocar pelo domínio final.
   description:
-    "Engenheiro de IA em Belo Horizonte. Agentes de voz, RAG, fine-tuning de modelos, jogos e produtos web, levados de protótipo a produção com resultado medido.",
+    "Engenheiro de IA em Belo Horizonte. Agentes de voz, RAG, fine-tuning de modelos e produtos web, levados de protótipo a produção com resultado medido.",
 
   hero: {
     eyebrow: "AI Engineer · Belo Horizonte",
     // Título da capa. Cada item vira uma linha no desktop.
     title: ["Engenheiro de IA.", "Levo ideias de protótipo a produto,", "e meço o resultado."],
     lede:
-      "Estudante de Engenharia da Computação no CEFET-MG e desenvolvedor de IA na AI4Sellers e cofundador do Dewe. Trabalho com agentes de voz, RAG, treino de modelos, jogos e web.",
+      "Estudante de Engenharia da Computação no CEFET-MG e desenvolvedor de IA na AI4Sellers e cofundador do Dewe. Trabalho com agentes de voz, RAG, treino de modelos e web.",
     primary: { label: "Ver projetos", href: "#projetos" },
     secondary: { label: "Currículo", href: "/curriculo-nicolas-de-vargas.pdf" },
   },
@@ -22,7 +22,7 @@ export const site = {
   stats: [
     { key: "commits", value: 0, suffix: "", label: "commits em 2026, entre projetos pessoais e da empresa" },
     { key: "vendedores", value: 100, suffix: "+", label: "vendedores treinados com os simuladores que construí" },
-    { key: "areas", value: 4, suffix: "", label: "áreas: IA aplicada, modelos, games e web" },
+    { key: "areas", value: 3, suffix: "", label: "áreas: IA aplicada, modelos e web" },
   ],
 
   about: {
@@ -30,7 +30,7 @@ export const site = {
     title: "Gosto de construir a coisa inteira e depois medir se funcionou.",
     paragraphs: [
       "Sou Nicolas, estudante de Engenharia da Computação no CEFET-MG e desenvolvedor de IA na AI4Sellers, em Belo Horizonte.",
-      "No trabalho, coloco em produção agentes de voz, RAG e a infraestrutura que sustenta tudo isso. Fora dele, treino modelos pequenos, faço jogos para testar IA de verdade e construo produtos web do zero.",
+      "No trabalho, coloco em produção agentes de voz, RAG e a infraestrutura que sustenta tudo isso. Fora dele, treino e destilo modelos pequenos e construo produtos web do zero.",
     ],
     photoAlt: "Retrato de Nicolas de Vargas em duotone violeta",
   },
@@ -54,7 +54,6 @@ export const credits = [
     href: "https://commons.wikimedia.org/wiki/File:Orlando_Furioso_hippogriff_battle.png",
   },
   { title: "Paraíso Perdido, prancha 12", href: "https://commons.wikimedia.org/wiki/File:Paradise_Lost_12.jpg" },
-  { title: "Idílios do Rei, prancha 14", href: "https://commons.wikimedia.org/wiki/File:Idylls_of_the_King_14.jpg" },
   { title: "Orlando Furioso, prancha 9", href: "https://commons.wikimedia.org/wiki/File:Orlando_Furioso_9.jpg" },
   {
     title: "Lavadeiras às margens do Tejo (L’Espagne, 1874)",
