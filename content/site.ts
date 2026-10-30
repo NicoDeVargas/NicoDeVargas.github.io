@@ -37,7 +37,7 @@ export const site = {
 
   contact: {
     email: "nicolas.vargas8@gmail.com",
-    linkedin: "https://www.linkedin.com/in/nicolas-de-vargas-446435221/",
+    linkedin: "https://www.linkedin.com/in/nicodevargas",
     github: "https://github.com/NicoDeVargas",
     resume: "/curriculo-nicolas-de-vargas.pdf",
   },

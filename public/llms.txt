@@ -35,5 +35,5 @@ Python, TypeScript, Next.js, React, PostgreSQL, AWS (ECS, RDS, S3, Lambda, Cloud
 
 - [Currículo (PDF)](https://nicodevargas.github.io/curriculo-nicolas-de-vargas.pdf)
 - [GitHub](https://github.com/NicoDeVargas)
-- [LinkedIn](https://www.linkedin.com/in/nicolas-de-vargas-446435221/)
+- [LinkedIn](https://www.linkedin.com/in/nicodevargas)
 - E-mail: nicolas.vargas8@gmail.com
