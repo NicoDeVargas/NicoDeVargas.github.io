@@ -14,7 +14,7 @@ Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno d
 
 ## Resultados
 
-- Simuladores de venda por voz com IA: −71% de custo por simulação; mais de 100 vendedores treinados.
+- Simuladores de venda por voz com IA: −68% de custo por simulação; mais de 100 vendedores treinados.
 - RAG híbrido com grafos num copiloto de vendas B2B: alucinação de produtos de 40% para 0%, medida em 1.000 perguntas.
 - Agente de CRM por voz: registro pós-reunião de 10–20 min para 2 min; campos vazios de 45% para 0%.
 - Arquitetura AWS multi-cliente desenhada por ele: ~60% menos custo nos pilotos; cliente novo em 2 dias.

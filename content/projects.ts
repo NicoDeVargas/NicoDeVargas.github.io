@@ -1,7 +1,7 @@
 /**
  * Conteúdo dos capítulos e projetos. Edite aqui; o site lê tudo deste arquivo.
  *
- * - `highlight`: o número de destaque (ex.: "−71%"). Sem número? Deixe vazio e
+ * - `highlight`: o número de destaque (ex.: "−68%"). Sem número? Deixe vazio e
  *   o cartão usa uma capitular (a inicial do projeto).
  * - `media`: vídeo/print do projeto (opcional). Sem mídia, o cartão é só
  *   texto: setor, número, nome, frase e tags.
@@ -60,7 +60,7 @@ export const chapters: Chapter[] = [
         slug: "simuladores-voz",
         title: "Simuladores de venda por voz",
         kicker: "Treinamento de vendas · varejo, consórcio, telecom",
-        highlight: "−71%",
+        highlight: "−68%",
         highlightLabel: "de custo por simulação",
         description: "Vendedores treinam conversando por voz com um cliente simulado.",
         facts: ["Mais de 100 vendedores treinados"],
