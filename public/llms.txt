@@ -27,7 +27,7 @@ Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno d
 
 - [Radar de avaliações](https://github.com/NicoDeVargas/ecommerce-classificator): transforma avaliações de clientes em ações para o vendedor (anúncio, lote, logística, fila de respostas). [App](https://nicodevargas.github.io/ecommerce-classificator/) e modelo no [Hugging Face](https://huggingface.co/NicoDeVargas/radar-avaliacoes-bertimbau).
 - [qwen3-npc-dialogue-lora](https://github.com/NicoDeVargas/qwen3-npc-dialogue-lora): fine-tuning, avaliação e deploy com llama.cpp. Modelo no [Hugging Face](https://huggingface.co/NicoDeVargas/qwen3-8b-npc-dialogue-lora).
-- [Fluente](https://github.com/NicoDeVargas/fluente-ia-avaliador-de-leitura): avalia a fluência de leitura de crianças palavra por palavra ([demo](https://fluente-black.vercel.app)).
+- [Fluente](https://github.com/NicoDeVargas/fluente-assistente-de-alfabetiza-o): avalia a leitura em voz alta de crianças palavra por palavra (palavras corretas por minuto). Whisper com fine-tuning para transcrição literal (97% dos erros encontrados) e benchmark próprio de 125 leituras, em que o Whisper aberto empata com a API paga. [Demo](https://fluente-black.vercel.app), [modelo](https://huggingface.co/NicoDeVargas/whisper-turbo-oral-reading-v0) e [benchmark](https://huggingface.co/datasets/NicoDeVargas/fluente-oral-reading-benchmark) no Hugging Face.
 - [Sinal de Alarme](https://github.com/NicoDeVargas/sinal-de-alarme-AssemblyAI-Voice-Agent-Hackathon): treino por voz para sinais de alarme da dengue (hackathon AssemblyAI).
 
 ## Stack

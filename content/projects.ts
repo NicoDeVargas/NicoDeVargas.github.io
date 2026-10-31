@@ -152,6 +152,26 @@ export const chapters: Chapter[] = [
         ],
       },
       {
+        slug: "fluente",
+        title: "Fluente",
+        kicker: "Educação · Whisper treinado para ouvir criança lendo",
+        highlight: "97%",
+        highlightLabel: "dos erros de leitura encontrados, com o Whisper treinado para transcrever o que foi dito",
+        description:
+          "A criança lê um texto em voz alta por um minuto e o professor recebe as palavras corretas por minuto, a métrica da avaliação nacional, com cada erro marcado no texto.",
+        facts: [
+          "No meu benchmark de 125 leituras com gabarito, o Whisper aberto empata com a API paga: 91% contra 93% de precisão",
+          "A nota vem de um alinhamento determinístico, sem LLM, com 107 testes das regras de um avaliador humano",
+        ],
+        stack: ["Whisper", "PyTorch", "Hugging Face", "Next.js"],
+        links: [
+          { label: "Demo", href: "https://fluente-black.vercel.app" },
+          { label: "Código", href: "https://github.com/NicoDeVargas/fluente-assistente-de-alfabetiza-o" },
+          { label: "Modelo", href: "https://huggingface.co/NicoDeVargas/whisper-turbo-oral-reading-v0" },
+          { label: "Benchmark", href: "https://huggingface.co/datasets/NicoDeVargas/fluente-oral-reading-benchmark" },
+        ],
+      },
+      {
         slug: "benchmark-voz",
         title: "Benchmark de motores de voz",
         kicker: "Avaliação · custo, latência e segurança",
@@ -184,19 +204,6 @@ export const chapters: Chapter[] = [
         links: [
           { label: "Estudo de caso", href: "#destaque" },
           { label: "Site", href: "https://deweai.com" },
-        ],
-      },
-      {
-        slug: "fluente",
-        title: "Fluente",
-        kicker: "Educação · leitura infantil",
-        highlight: "palavra a palavra",
-        highlightLabel: "a leitura avaliada palavra por palavra",
-        description: "Mede a fluência de leitura de crianças, sem LLM na nota.",
-        stack: ["Next.js", "AssemblyAI"],
-        links: [
-          { label: "Demo", href: "https://fluente-black.vercel.app" },
-          { label: "Código", href: "https://github.com/NicoDeVargas/fluente-ia-avaliador-de-leitura" },
         ],
       },
       {
