@@ -86,6 +86,16 @@ export const chapters: Chapter[] = [
         stack: ["Agentes de voz", "LLM", "CRM"],
       },
       {
+        slug: "mcp-compras-publicas",
+        title: "Agente de compras públicas com MCP",
+        kicker: "Pré-vendas B2B · setor público",
+        highlight: "18",
+        highlightLabel: "ferramentas num servidor MCP próprio, com login OAuth",
+        description: "Um agente corporativo consulta, por MCP, uma base de compras públicas que se atualiza sozinha todo dia.",
+        facts: ["5,9 mil documentos, todos com a fonte de origem", "Versão nova da base só entra se passar na conferência"],
+        stack: ["MCP", "TypeScript", "Lambda", "Cognito", "Fargate", "DuckDB"],
+      },
+      {
         slug: "aws-multicliente",
         title: "Arquitetura AWS multi-cliente",
         kicker: "Infraestrutura · desenhada por mim",

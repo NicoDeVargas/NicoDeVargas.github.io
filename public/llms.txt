@@ -17,6 +17,7 @@ Plataforma EdTech de simulação clínica com IA (https://deweai.com): o aluno d
 - Simuladores de venda por voz com IA: −68% de custo por simulação; mais de 100 vendedores treinados.
 - RAG híbrido com grafos num copiloto de vendas B2B: alucinação de produtos de 40% para 0%, medida em 1.000 perguntas.
 - Agente de CRM por voz: registro pós-reunião de 10–20 min para 2 min; campos vazios de 45% para 0%.
+- Agente de compras públicas com servidor MCP próprio (TypeScript, Lambda, OAuth com Cognito, 18 ferramentas) sobre uma base atualizada todo dia; 5,9 mil documentos com proveniência.
 - Arquitetura AWS multi-cliente desenhada por ele: ~60% menos custo nos pilotos; cliente novo em 2 dias.
 - Radar de avaliações para e-commerce: BERTimbau destilado do Claude Opus, 87% de acerto (igual ao professor) rodando no navegador, sem custo por avaliação.
 - Fine-tuning LoRA do Qwen3-8B para NPCs de jogo: ações corretas de 11% para 93%.
